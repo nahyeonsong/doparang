@@ -6,6 +6,7 @@ from pybo.models import Question
 
 
 def index(request):
+    3 / 0  # 강제로 오류발생
     kw = request.GET.get("kw", "")  # 검색어
     question_list = Question.objects.order_by("-create_date")
     if kw:
