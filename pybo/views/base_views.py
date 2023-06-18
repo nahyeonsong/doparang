@@ -4,8 +4,13 @@ from django.shortcuts import render, get_object_or_404
 
 from pybo.models import Question
 
+import logging
+
+logger = logging.getLogger("pybo")
+
 
 def index(request):
+    logger.info("INFO 레벨로 출력")
     kw = request.GET.get("kw", "")  # 검색어
     question_list = Question.objects.order_by("-create_date")
     if kw:
