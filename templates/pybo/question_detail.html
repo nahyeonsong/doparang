@@ -39,16 +39,6 @@
                         >{{question.voter.count}}</span
                     >
                 </a>
-                <a
-                    href="javascript:void(0)"
-                    data-uri="{% url 'pybo:questionopp_voteopp' questionopp.id  %}"
-                    class="recommend btn btn-sm btn-outline-secondary"
-                >
-                    반대
-                    <span class="badge rounded-pill bg-success"
-                        >{{questionopp.voteropp.count}}</span
-                    >
-                </a>
                 {% if request.user == question.author %}
                 <a
                     href="{% url 'pybo:question_modify' question.id  %}"
@@ -95,16 +85,6 @@
                     추천
                     <span class="badge rounded-pill bg-success"
                         >{{answer.voter.count}}</span
-                    >
-                </a>
-                <a
-                    href="javascript:void(0)"
-                    data-uri="{% url 'pybo:answeropp_voteopp' answeropp.id  %}"
-                    class="recommend btn btn-sm btn-outline-secondary"
-                >
-                    반대
-                    <span class="badge rounded-pill bg-success"
-                        >{{answeropp.voteropp.count}}</span
                     >
                 </a>
                 {% if request.user == answer.author %}
@@ -176,14 +156,6 @@
     Array.from(recommend_elements).forEach(function (element) {
         element.addEventListener("click", function () {
             if (confirm("정말로 추천하시겠습니까?")) {
-                location.href = this.dataset.uri;
-            }
-        });
-    });
-    const opposite_elements = document.getElementsByClassName("opposite");
-    Array.from(opposite_elements).forEach(function (element) {
-        element.addEventListener("click", function () {
-            if (confirm("정말로 반대하시겠습니까?")) {
                 location.href = this.dataset.uri;
             }
         });
