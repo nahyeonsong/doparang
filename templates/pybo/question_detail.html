@@ -41,6 +41,17 @@
                 </a>
                 {% if request.user == question.author %}
                 <a
+                    href="javascript:void(0)"
+                    data-uri="{% url 'pybo:question_vote' questionopp.id  %}"
+                    class="recommend btn btn-sm btn-outline-secondary"
+                >
+                    반대
+                    <span class="badge rounded-pill bg-success"
+                        >{{questionopp.voteropp.count}}</span
+                    >
+                </a>
+                {% if request.user == questionopp.authoropp %}
+                <a
                     href="{% url 'pybo:question_modify' question.id  %}"
                     class="btn btn-sm btn-outline-secondary"
                     >수정</a
@@ -88,6 +99,17 @@
                     >
                 </a>
                 {% if request.user == answer.author %}
+                <a
+                    href="javascript:void(0)"
+                    data-uri="{% url 'pybo:answer_vote' answeropp.id  %}"
+                    class="recommend btn btn-sm btn-outline-secondary"
+                >
+                    반대
+                    <span class="badge rounded-pill bg-success"
+                        >{{answeropp.voteropp.count}}</span
+                    >
+                </a>
+                {% if request.user == answeropp.authoropp %}
                 <a
                     href="{% url 'pybo:answer_modify' answer.id  %}"
                     class="btn btn-sm btn-outline-secondary"
