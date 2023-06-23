@@ -70,7 +70,7 @@ def answer_delete(request, answer_id):
 def answer_vote(request, answer_id):
     answer = get_object_or_404(Answer, pk=answer_id)
     if request.user == answer.author:
-        messages.error(request, "본인이 작성한 글은 추천할수 없습니다")
+        messages.error(request, "본인이 작성한 글은 추천할 수 없습니다")
     else:
         answer.voter.add(request.user)
     return redirect(
@@ -84,12 +84,12 @@ def answer_vote(request, answer_id):
 def answeropp_voteopp(request, answeropp_id):
     answeropp = get_object_or_404(Answer, pk=answeropp_id)
     if request.user == answeropp.authoropp:
-        messages.error(request, "본인이 작성한 글은 반대할수 없습니다")
+        messages.error(request, "본인이 작성한 글은 반대할 수 없습니다")
     else:
         answeropp.voteropp.add(request.user)
     return redirect(
         "{}#answeropp_{}".format(
-            resolve_url("pybo:detail", question_id=answeropp.questionopp.id),
+            resolve_url("pybo:detail", questionopp_id=answeropp.questionopp.id),
             answeropp.id,
         )
     )

@@ -46,13 +46,17 @@ urlpatterns = [
         name="question_vote",
     ),
     path(
-        "questionopp/voteopp/<int:questionopp_id>/",
+        "question/vote/<int:question_id>/",
         question_views.questionopp_voteopp,
         name="questionopp_voteopp",
     ),
-    path("answer/vote/<int:answer_id>/", answer_views.answer_vote, name="answer_vote"),
     path(
-        "answeropp/voteopp/<int:answeropp_id>/",
+        "answer/vote/<int:answer_id>/",
+        answer_views.answer_vote,
+        name="answer_vote",
+    ),
+    path(
+        "answer/vote/<int:answer_id>/",
         answer_views.answeropp_voteopp,
         name="answeropp_voteopp",
     ),

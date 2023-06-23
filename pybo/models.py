@@ -6,8 +6,8 @@ class Question(models.Model):
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="author_question"
     )
-    authorodd = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="authorodd_questionodd"
+    authoropp = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="authoropp_questionopp"
     )
     subject = models.CharField(max_length=200)
     content = models.TextField()
@@ -26,8 +26,8 @@ class Answer(models.Model):
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="author_answer"
     )
-    authorodd = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="authorodd_answerodd"
+    authoropp = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="authoropp_answeropp"
     )
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     content = models.TextField()
