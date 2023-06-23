@@ -39,10 +39,9 @@
                         >{{question.voter.count}}</span
                     >
                 </a>
-                {% if request.user == question.author %}
                 <a
                     href="javascript:void(0)"
-                    data-uri="{% url 'pybo:question_vote' questionopp.id  %}"
+                    data-uri="{% url 'pybo:questionopp_voteopp' questionopp.id  %}"
                     class="recommend btn btn-sm btn-outline-secondary"
                 >
                     반대
@@ -50,7 +49,7 @@
                         >{{questionopp.voteropp.count}}</span
                     >
                 </a>
-                {% if request.user == questionopp.authoropp %}
+                {% if request.user == question.author %}
                 <a
                     href="{% url 'pybo:question_modify' question.id  %}"
                     class="btn btn-sm btn-outline-secondary"
@@ -98,7 +97,6 @@
                         >{{answer.voter.count}}</span
                     >
                 </a>
-                {% if request.user == answer.author %}
                 <a
                     href="javascript:void(0)"
                     data-uri="{% url 'pybo:answer_vote' answeropp.id  %}"
@@ -109,7 +107,7 @@
                         >{{answeropp.voteropp.count}}</span
                     >
                 </a>
-                {% if request.user == answeropp.authoropp %}
+                {% if request.user == answer.author %}
                 <a
                     href="{% url 'pybo:answer_modify' answer.id  %}"
                     class="btn btn-sm btn-outline-secondary"
@@ -178,6 +176,14 @@
     Array.from(recommend_elements).forEach(function (element) {
         element.addEventListener("click", function () {
             if (confirm("정말로 추천하시겠습니까?")) {
+                location.href = this.dataset.uri;
+            }
+        });
+    });
+    const opposite_elements = document.getElementsByClassName("opposite");
+    Array.from(opposite_elements).forEach(function (element) {
+        element.addEventListener("click", function () {
+            if (confirm("정말로 반대하시겠습니까?")) {
                 location.href = this.dataset.uri;
             }
         });

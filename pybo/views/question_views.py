@@ -60,3 +60,13 @@ def question_vote(request, question_id):
     else:
         question.voter.add(request.user)
     return redirect("pybo:detail", question_id=question.id)
+
+
+@login_required(login_url="common:login")
+def questionopp_voteopp(request, questionopp_id):
+    questionopp = get_object_or_404(Question, pk=questionopp_id)
+    if request.user == questionopp.authoropp:
+        messages.error(request, "본인이 작성한 글은 반대할수 없습니다")
+    else:
+        questionopp.voteropp.add(request.user)
+    return redirect("pybo:detail", questionopp_id=questionopp.id)

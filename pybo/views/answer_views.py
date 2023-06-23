@@ -78,3 +78,18 @@ def answer_vote(request, answer_id):
             resolve_url("pybo:detail", question_id=answer.question.id), answer.id
         )
     )
+
+
+@login_required(login_url="common:login")
+def answeropp_voteopp(request, answeropp_id):
+    answeropp = get_object_or_404(Answer, pk=answeropp_id)
+    if request.user == answeropp.authoropp:
+        messages.error(request, "본인이 작성한 글은 반대할수 없습니다")
+    else:
+        answeropp.voteropp.add(request.user)
+    return redirect(
+        "{}#answeropp_{}".format(
+            resolve_url("pybo:detail", question_id=answeropp.questionopp.id),
+            answeropp.id,
+        )
+    )
