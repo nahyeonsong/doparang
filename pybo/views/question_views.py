@@ -69,7 +69,7 @@ def create_post(request):
         if form.is_valid():
             form.save()
             return redirect(
-                "post_list"
+                "question_list"
             )  # Replace 'post_list' with the name of your post list view
     else:
         form = PostForm()
