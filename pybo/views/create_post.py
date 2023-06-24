@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
-from .forms import PostForm
+from ..forms import PostForm
 
 
 def create_post(request):
-    if request.method == "POST":
-        form = PostForm(request.POST, request.FILES)
+    if request.method == "QUESTION":
+        form = PostForm(request.QUESTION, request.FILES)
         if form.is_valid():
             form.save()
             return redirect(
