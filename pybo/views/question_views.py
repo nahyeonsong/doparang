@@ -2,6 +2,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 from django.utils import timezone
+from .forms import PostForm
 
 from ..forms import QuestionForm
 from ..models import Question
@@ -60,3 +61,17 @@ def question_vote(request, question_id):
     else:
         question.voter.add(request.user)
     return redirect("pybo:detail", question_id=question.id)
+
+
+def create_post(request):
+    if request.method == "POST":
+        form = PostForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect(
+                "post_list"
+            )  # Replace 'post_list' with the name of your post list view
+    else:
+        form = PostForm()
+
+    return render(request, "create_post.html", {"form": form})
