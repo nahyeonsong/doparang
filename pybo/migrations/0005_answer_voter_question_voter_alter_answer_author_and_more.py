@@ -26,20 +26,6 @@ class Migration(migrations.Migration):
                 related_name="voter_question", to=settings.AUTH_USER_MODEL
             ),
         ),
-        migrations.AddField(
-            model_name="answeropp",
-            name="voteropp",
-            field=models.ManyToManyField(
-                related_name="voteropp_answeropp", to=settings.AUTH_USER_MODEL
-            ),
-        ),
-        migrations.AddField(
-            model_name="questionopp",
-            name="voteropp",
-            field=models.ManyToManyField(
-                related_name="voteropp_questionopp", to=settings.AUTH_USER_MODEL
-            ),
-        ),
         migrations.AlterField(
             model_name="answer",
             name="author",
@@ -55,24 +41,6 @@ class Migration(migrations.Migration):
             field=models.ForeignKey(
                 on_delete=django.db.models.deletion.CASCADE,
                 related_name="author_question",
-                to=settings.AUTH_USER_MODEL,
-            ),
-        ),
-        migrations.AlterField(
-            model_name="answeropp",
-            name="authoropp",
-            field=models.ForeignKey(
-                on_delete=django.db.models.deletion.CASCADE,
-                related_name="authoropp_answeropp",
-                to=settings.AUTH_USER_MODEL,
-            ),
-        ),
-        migrations.AlterField(
-            model_name="questionopp",
-            name="authoropp",
-            field=models.ForeignKey(
-                on_delete=django.db.models.deletion.CASCADE,
-                related_name="authoropp_questionopp",
                 to=settings.AUTH_USER_MODEL,
             ),
         ),
