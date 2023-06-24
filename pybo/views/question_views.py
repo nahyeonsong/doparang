@@ -5,7 +5,6 @@ from django.utils import timezone
 
 from ..forms import QuestionForm
 from ..models import Question
-from ..forms import PostForm
 
 
 @login_required(login_url="common:login")
@@ -61,17 +60,3 @@ def question_vote(request, question_id):
     else:
         question.voter.add(request.user)
     return redirect("pybo:detail", question_id=question.id)
-
-
-def create_post(request):
-    if request.method == "POST":
-        form = PostForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect(
-                "question_list"
-            )  # Replace 'post_list' with the name of your post list view
-    else:
-        form = PostForm()
-
-    return render(request, "create_post.html", {"form": form})
