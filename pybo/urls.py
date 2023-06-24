@@ -4,7 +4,6 @@ from .views import (
     base_views,
     question_views,
     answer_views,
-    create_post,
 )
 
 app_name = "pybo"
@@ -52,6 +51,4 @@ urlpatterns = [
         answer_views.answer_vote,
         name="answer_vote",
     ),
-    path("create/", create_post, name="create_post"),
-    # Other URL patterns...
 ]

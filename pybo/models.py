@@ -28,12 +28,3 @@ class Answer(models.Model):
 
     def __str__(self):
         return self.content
-
-
-class Post(models.Model):
-    title = models.CharField(max_length=200)
-    content = models.TextField()
-    image = models.ImageField(upload_to="post_images/", blank=True, null=True)
-
-
-# Create your models here.
