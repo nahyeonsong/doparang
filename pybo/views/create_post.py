@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from ..forms import PostForm
+from .forms import PostForm
 
 
 def create_post(request):
