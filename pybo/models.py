@@ -28,6 +28,16 @@ class Answer(models.Model):
 
     def __str__(self):
         return self.content
+    
+    class Question(models.Model):
+    subject = models.CharField(max_length=50)
+    # 게시글 Post에 이미지 추가
+    mainphoto = models.ImageField(blank=True, null=True)
+    contents = models.TextField()
+
+    # postname이 Post object 대신 나오기
+    def __str__(self):
+        return self.subject
 
 
 # Create your models here.
