@@ -2,10 +2,10 @@ import environ
 
 from .base import *
 
-ALLOWED_HOSTS = ["15.165.89.162"]
+ALLOWED_HOSTS = ["15.165.89.162", "doparang.com"]
 STATIC_ROOT = BASE_DIR / "static/"
 STATICFILES_DIRS = []
-DEBUG = False
+DEBUG = True
 
 
 env = environ.Env()
